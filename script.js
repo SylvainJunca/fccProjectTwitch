@@ -9,18 +9,18 @@ const getJsonWithPromise = function(url){
   })
 }
 
-for (var i = 0; i < channels.length; i++){
-getJsonWithPromise('https://wind-bow.glitch.me/twitch-api/users/' + channels[i]).then(function(twitchUser){
+channels.forEach((users) => {
+getJsonWithPromise('https://wind-bow.glitch.me/twitch-api/users/' + users).then(function(twitchUser){
   console.log(twitchUser);
   document.getElementById("display").innerHTML += " <img src ='" + twitchUser.logo + "' width='80px'> " + twitchUser.display_name;
 });
-getJsonWithPromise('https://wind-bow.glitch.me/twitch-api/streams/' + channels[i]).then(function(twitchStream){
+getJsonWithPromise('https://wind-bow.glitch.me/twitch-api/streams/' + users).then(function(twitchStream){
   if(twitchStream.stream == null) {
     document.getElementById("display").innerHTML += " is Offline<br><hr>"
   }
  else {
-    document.getElementById("display").innerHTML += " <a href='https://www.twitch.tv/" + channels[i] + "' target='_blank'> plays " + twitchStream.stream.game + "</a><br><hr>"
+    document.getElementById("display").innerHTML += " <a href='https://www.twitch.tv/" + users + "' target='_blank'> plays " + twitchStream.stream.game + "</a><br><hr>"
   }
 });
-};
+});
 
