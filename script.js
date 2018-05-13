@@ -1,6 +1,6 @@
 $(document).ready();
 
-var channels = ["Freecodecamp", "Ninja", "GEICOGaming", "pokemon", "ESL_SC2", "OgamingSC2", "cretetion", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"]
+const channels = ["Freecodecamp", "Ninja", "GEICOGaming", "pokemon", "ESL_SC2", "OgamingSC2", "cretetion", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"]
 const getJsonWithPromise = function(url){
   return new Promise(function(resolve, reject){
     $.getJSON(url, function(jsonResult){
@@ -8,7 +8,6 @@ const getJsonWithPromise = function(url){
     })
   })
 }
-
 
 for (var i = 0; i < channels.length; i++){
 getJsonWithPromise('https://wind-bow.glitch.me/twitch-api/users/' + channels[i]).then(function(twitchUser){
