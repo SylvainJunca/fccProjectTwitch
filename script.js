@@ -15,8 +15,6 @@ $(document).ready(function () {
       "https://wind-bow.glitch.me/twitch-api/users/" + channel
     )
   )
-
-  // concat another array of promises that gets the stream information
   .concat(
     channels.map(channel =>
       getJsonWithPromise(
